@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="pojo.GenuriMuzicale" table="genurimuzicale" catalog="tema" optimistic-lock="version">
+<id name="idgen" type="java.lang.Long">
+<column name="idgen" />
+<generator class="identity" />
+</id>
+<property name="nume" type="string">
+<column name="Nume" length="45" />
+</property>
+<property name="data_aparitie" type="string">
+<column name="Data_aparitie" length="45" />
+</property>
+<property name="tip" type="string">
+<column name="Tip" length="45" />
+</property>
+<set name="artisti" table="artisti" inverse="true" lazy="true"
+fetch="select">
+<key>
+<column name="idgen" />
+</key>
+<one-to-many class="pojo.Artisti" />
+</set>
+</class>
+</hibernate-mapping>
